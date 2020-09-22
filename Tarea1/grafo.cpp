@@ -19,7 +19,7 @@ class Grafo
                 }
             void add(T valor)
                 {
-                    NodeG nuevo = new NodeG();
+                    NodeG<T> nuevo;
                     nuevo.data= valor;
                     nodos->add(nuevo);
                 }
@@ -27,9 +27,25 @@ class Grafo
                 {
 
                 }
-            void enlazar(T valor, T valor)
-                {
 
+            void enlazar(T inicio, T final)
+                {
+                    node<NodeG<T>>* curr =nodos->first;
+
+                    NodeG<T> nodoInicial;
+                    NodeG<T> nodofinal;
+
+                    for(int i=0; i<nodos->longitud;i++)
+                        {
+                            if(curr->data.data==inicio)
+                                {
+                                    nodoInicial= curr->data;
+                                }
+                            if(curr->data.data==final)
+                                {
+                                    nodofinal= curr->data;
+                                }
+                        }
                 }
             void Floyd_Warshall()
                 {

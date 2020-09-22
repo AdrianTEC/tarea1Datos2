@@ -55,6 +55,23 @@ public:
             }
         }
 
+    T getNodoWithData(T data)
+    {
+        node<T>* curr = this->first;
+        for(int i = 0; i < longitud; ++i)
+            {
+                if(curr->data!=data)
+                {
+                    curr = curr->next;
+                }
+                else {
+                    return curr;
+                }
+
+            }
+        return curr->data;
+    }
+
     T get(int index)
         {
             if(index == 0)
