@@ -7,6 +7,7 @@ namespace Ui {
 class Widget;
 }
 class QLocalSocket;
+class LocalServer;
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -20,9 +21,18 @@ private slots:
 
     void on_quitar_clicked();
 
+    void on_anadir_clicked();
+
+    void on_eliminar_clicked();
+
+    void on_Enlazar_clicked();
+
+    void on_calcular_clicked();
+
 private:
     Ui::Widget *ui;
     QLocalSocket *mSocket;
+    LocalServer *mLocalServer;
 };
 
 #endif // WIDGET_H

@@ -17,4 +17,3 @@ void  LocalServer::envia(const QString &msj)
             mSocket->flush();
         }
     }
-

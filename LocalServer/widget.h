@@ -2,11 +2,12 @@
 #define WIDGET_H
 
 #include <QWidget>
-
+using namespace std;
 namespace Ui {
 class Widget;
 }
 class LocalServer;
+class QLocalSocket;
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -14,7 +15,7 @@ class Widget : public QWidget
 public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
-
+    void conectar();
 private slots:
     void on_iniciar_clicked();
 
@@ -25,6 +26,7 @@ private slots:
 private:
     Ui::Widget *ui;
     LocalServer *mLocalServer;
+    QLocalSocket *mSocket;
 };
 
 #endif // WIDGET_H
