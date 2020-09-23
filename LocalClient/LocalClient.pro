@@ -1,16 +1,17 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-09-21T10:58:59
+# Project created by QtCreator 2020-09-22T18:10:46
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Tarea1
+TARGET = LocalClient
 TEMPLATE = app
-CONFIG += console
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -25,14 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    linkedlist.cpp \
-    nodo.cpp \
-    grafo.cpp
+        widget.cpp
 
 HEADERS += \
-        mainwindow.h \
-    nodo.h
+        widget.h
 
 FORMS += \
-        mainwindow.ui
+        widget.ui
+QMAKE_CXXFLAGS += -std=gnu++11
