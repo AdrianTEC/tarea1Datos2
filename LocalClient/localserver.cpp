@@ -1,6 +1,7 @@
 #include "localserver.h"
 #include <QLocalSocket>
 #include <QTextStream>
+
 LocalServer::LocalServer(QObject *parent) : QLocalServer(parent)
 {
     mSocket=nullptr;

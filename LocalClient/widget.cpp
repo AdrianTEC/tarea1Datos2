@@ -3,6 +3,8 @@
 #include "localserver.h"
 #include <QLocalSocket>
 #include <QTextStream>
+#include<QJsonObject>
+#include <QJsonDocument>
 
 Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)
     {
@@ -35,20 +37,34 @@ void Widget::on_quitar_clicked()
 
 void Widget::on_anadir_clicked()
     {
-        mLocalServer->envia("anadir");
+        mLocalServer->envia(NewOrden("anadir",ui->newnodo->value(),0));
+
     }
 
 void Widget::on_eliminar_clicked()
     {
-        mLocalServer->envia("eliminar");
+        mLocalServer->envia(NewOrden("eliminar",ui->byenodo->value(),0));
     }
 
 void Widget::on_Enlazar_clicked()
     {
-        mLocalServer->envia("enlazar");
+        mLocalServer->envia(NewOrden("enlazar",ui->inicioe->value(),ui->finale->value()));
     }
 
 void Widget::on_calcular_clicked()
-{
-    mLocalServer->envia("calculo");
+    {
+        mLocalServer->envia(NewOrden("calculo",ui->inicioC->value(),ui->finalC->value()));
+    }
+
+QString Widget::NewOrden(QString a,int b, int c){
+    QJsonObject comand
+        {
+          {"orden",a},
+          {"inicio",QString::number(b) },
+          {"final",QString::number(c) }
+        };
+    QJsonDocument doc(comand);
+    QString strJson(doc.toJson(QJsonDocument::Compact));
+    return strJson;
 }
+

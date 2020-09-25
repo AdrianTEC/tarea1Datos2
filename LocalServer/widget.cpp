@@ -3,6 +3,11 @@
 #include "localserver.h"
 #include <QLocalSocket>
 #include <QMessageBox>
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include<QJsonObject>
+#include <QJsonDocument>
 using namespace std;
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -12,8 +17,12 @@ Widget::Widget(QWidget *parent) :
 
     mSocket= new QLocalSocket(this);
     mLocalServer= new LocalServer(this);
-    //connect(mLocalServer, SIGNAL(newConnection()), this, SLOT(conectart()));
-    connect(mSocket,&QLocalSocket::readyRead,[&]{QTextStream T(mSocket);ui->CONSOLE->addItem(T.readAll());});
+
+    connect(mSocket,&QLocalSocket::readyRead,[&]{QTextStream T(mSocket);
+        QString algo= T.readAll();
+
+         call(algo);});
+
     this->setWindowTitle("Servidor");
 }
 
@@ -35,6 +44,9 @@ void Widget::on_iniciar_clicked()
         }
     }
 
+
+
+
 void Widget::on_enviar_clicked()
     {
         mLocalServer->envia(ui->msj->text());
@@ -42,8 +54,65 @@ void Widget::on_enviar_clicked()
 
 void Widget::on_quitar_clicked()
     {
+        mLocalServer->close();
         close();
     }
+void Widget::call(QString info)
+    {
+
+        QJsonDocument doc1 = QJsonDocument::fromJson(info.toUtf8());
+        try
+            {
+               QJsonObject orden_aux = doc1.object();// orden es un objeto json
+               orden=&orden_aux;
+
+               ui->CONSOLE->addItem("Ejecutar: "+value("orden") +" "+ value("inicio")+" " +value("final") );
+               if(comprobar("enlazar"))
+                   {
+
+                   }
+               if(comprobar("eliminar"))
+                   {
+
+                   }
+               if(comprobar("crear"))
+                   {
+
+                   }
+               if(comprobar("calculo"))
+                   {
+
+                   }
+
+
+            }
+       catch(int e){
+                ui->CONSOLE->addItem("Error al asignar el puntero");
+            }
+
+
+
+
+
+    }
+QString Widget::value(QString valor)
+    {
+        try{
+                QJsonValue algo = orden->value(valor);
+                return algo.toString();
+            }
+        catch (int e)
+            {
+
+            }
+
+    }
+bool Widget::comprobar(QString valor)
+    {
+        return QString::compare(value("orden"),valor);
+
+    }
+
 void Widget::conectar(){
 
     mSocket->connectToServer("user");

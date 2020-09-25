@@ -29,6 +29,8 @@ private slots:
 
     void on_calcular_clicked();
 
+    QString NewOrden(QString a,int b, int c);
+
 private:
     Ui::Widget *ui;
     QLocalSocket *mSocket;

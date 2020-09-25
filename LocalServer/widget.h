@@ -20,13 +20,17 @@ private slots:
     void on_iniciar_clicked();
 
     void on_enviar_clicked();
+    bool comprobar(QString valor);
 
     void on_quitar_clicked();
+    void call(QString info);
 
 private:
     Ui::Widget *ui;
     LocalServer *mLocalServer;
     QLocalSocket *mSocket;
+    QJsonObject* orden;
+    QString value(QString valor);
 };
 
 #endif // WIDGET_H
