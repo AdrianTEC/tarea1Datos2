@@ -2,6 +2,17 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "ui_widget.h"
+#include "localserver.h"
+#include <QLocalSocket>
+#include <QMessageBox>
+
+#include <string>
+#include <stdio.h>
+#include<QJsonObject>
+#include <QJsonDocument>
+
+#include "FloydWAlgo.h"
 using namespace std;
 namespace Ui {
 class Widget;
@@ -25,12 +36,15 @@ private slots:
     void on_quitar_clicked();
     void call(QString info);
 
+    void on_escu_clicked();
+
 private:
     Ui::Widget *ui;
     LocalServer *mLocalServer;
     QLocalSocket *mSocket;
     QJsonObject* orden;
     QString value(QString valor);
+    DGraph<int>* grafo;
 };
 
 #endif // WIDGET_H

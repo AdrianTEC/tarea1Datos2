@@ -1,4 +1,4 @@
-#include "doublenode.hpp"
+#include "DoubleNode.hpp"
 #define EmptyLen 0
 #define minIndex 0
 #define singleElement 1
@@ -58,22 +58,27 @@ int DoubleList<T>::getLen() {
     return len;
 }
 template<typename T>
-void DoubleList<T>::add(T &data) {
-    DoubleNode<T> *temp=new DoubleNode<T>;
-    len++;
-    temp->setData(data);
-    if(Tail==NULL){
-        Head=temp;
-        Tail=temp;
+void DoubleList<T>::add(T &data)
+    {
+        DoubleNode<T> *temp=new DoubleNode<T>;
+        len++;
+        temp->setData(data);
+
+        if(Tail==NULL)
+            {
+                Head=temp;
+                Tail=temp;
+            }
+        else
+            {
+                Tail->setFront(*temp);
+                temp->setBack(*Tail);
+                Tail=temp;
+            }
     }
-    else{
-        Tail->setFront(*temp);
-        temp->setBack(*Tail);
-        Tail=temp;
-    }
-}
 template<typename T>
-T* DoubleList<T>::get(int pos) {
+T* DoubleList<T>::get(int pos)
+{
     DoubleNode<T>* Signaled=DoubleList<T>::getNode(pos);
     return Signaled->getData();
 }
@@ -103,7 +108,9 @@ void DoubleList<T>::set(int pos,T &data) {
 }
 template<typename T>
 DoubleList<T>::DoubleList(DoubleList<T> &List) {
-    DoubleList<int>();
+    Tail=NULL;
+    Head=NULL;
+    len=EmptyLen;
     T *temp;
     for (int i = 0; i < List.len; i++) {
         temp = new T(*List.get(i));

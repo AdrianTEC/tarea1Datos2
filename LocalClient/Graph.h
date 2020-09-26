@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include<QPainter>
-#include "DirectedGraph.hpp"
+#include "Grafo.hpp"
 #include<string>
 #include<math.h>
 #define Defaul_Radius 20
@@ -19,11 +19,11 @@ public:
     void setRadius(int rad);
     void addEdge(int a,int b,int value);
     void setSize(int x,int y);
-
+    DoubleList<QPoint>* Points;
 protected:
     void paintEvent(QPaintEvent* event);
 private:
-    DoubleList<QPoint>* Points;
+
     int *radius;
     DoubleList<int>* Edges;
     DoubleList<QPoint> *stringPoint;

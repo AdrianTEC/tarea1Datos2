@@ -14,12 +14,12 @@ Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)
         ui->setupUi(this);
 
         mSocket= new QLocalSocket(this);
-        historialPosiciones= new DoubleList<DoubleList<int>>();
+
         mLocalServer= new LocalServer(this);
-        mLocalServer->listen("user");
+
         graph=new Graph(ui->canva);
 
-        grafo= new DGraph<int>;
+        grafo= new Grafo<int>;
 
         this->setWindowTitle("Visualizar Grafos");
         connect(mSocket,&QLocalSocket::readyRead,[&]{QTextStream T(mSocket);ui->CONSOLE->addItem(T.readAll());});
@@ -32,25 +32,30 @@ Widget::~Widget()
 
 void Widget::on_conectar_clicked()
     {
+
         mSocket->connectToServer(ui->servidor->text());
     }
 
 
 void Widget::on_quitar_clicked()
     {
+        mLocalServer->close();
         free(mSocket);
         free(mLocalServer);
-        free(historialPosiciones);
-        free(graph);
-        free(grafo);
+
+
         close();
     }
-
+/**
+ * @brief Widget::on_anadir_clicked
+ */
 void Widget::on_anadir_clicked()
     {
 
         try{
-            mLocalServer->envia(NewOrden("anadir",ui->newnodo->value(),0));
+         int algo =graph->Points->getLen();
+            mLocalServer->envia(NewOrden("crear",ui->newnodo->value(),algo,0));
+
             addNodeImage();
             }
 
@@ -64,7 +69,6 @@ void Widget::on_anadir_clicked()
 
 void Widget::on_eliminar_clicked()
     {
-        mLocalServer->envia(NewOrden("eliminar",ui->byenodo->value(),0));
 
     }
 
@@ -72,15 +76,26 @@ void Widget::on_Enlazar_clicked()
     {
         if(ui->inicioe->value()!=ui->finale->value())
         {
-            mLocalServer->envia(NewOrden("enlazar",ui->inicioe->value(),ui->finale->value()));
-            AddEdge();
+
+            int algo =graph->Points->getLen();
+            if(ui->inicioe->value() <algo && ui->finale->value()<algo)
+                {
+
+                mLocalServer->envia(NewOrden("enlazar",ui->inicioe->value(),ui->finale->value(),ui->value->value()));
+                AddEdge();
+
+                }
+
+
+
+
         }
 
     }
 
 void Widget::on_calcular_clicked()
     {
-        mLocalServer->envia(NewOrden("calculo",ui->inicioC->value(),ui->finalC->value()));
+        mLocalServer->envia(NewOrden("calculo",ui->inicioC->value(),ui->finalC->value(),0));
     }
 
 
@@ -90,6 +105,7 @@ void Widget::AddEdge()
     {
         graph->addEdge(ui->inicioe->value(),ui->finale->value(), ui->value->value() );
         graph->update();
+        grafo->fixRelationShip(ui->inicioe->value(),ui->finale->value(),ui->value->value() );
     }
 
 void Widget::on_getRoute_clicked()
@@ -108,18 +124,19 @@ void Widget::addNodeImage()
         pos.add(x);
         pos.add(y);
         historialPosiciones->add( pos );
-
-
+        int algo = graph->Points->getLen();
+        grafo->AddNode(algo);
 
         graph->addNode(x,y,ui->newnodo->value());
         graph->update();
     }
-QString Widget::NewOrden(QString a,int b, int c)
+QString Widget::NewOrden(QString a,int b, int c,int d)
     {
         QJsonObject comand
             {
               {"orden",a},
               {"inicio",QString::number(b) },
+              {"valor",QString::number(d) },
               {"final",QString::number(c) }
             };
         QJsonDocument doc(comand);
@@ -127,3 +144,8 @@ QString Widget::NewOrden(QString a,int b, int c)
         return strJson;
     }
 
+
+void Widget::on_pushButton_clicked()
+{
+    mLocalServer->listen(ui->nombre->text());
+}

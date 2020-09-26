@@ -90,7 +90,7 @@
     <string>Quitar</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -119,14 +119,54 @@
     </item>
    </layout>
   </widget>
+  <widget class="QLineEdit" name="user">
+   <property name="geometry">
+    <rect>
+     <x>293</x>
+     <y>410</y>
+     <width>106</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>user321</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>410</y>
+     <width>127</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Usuario</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="escu">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>410</y>
+     <width>123</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Escuchar</string>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>msj</zorder>
-  <zorder>label</zorder>
-  <zorder>enviar</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>CONSOLE</zorder>
   <zorder>label_3</zorder>
   <zorder>quitar</zorder>
+  <zorder>user</zorder>
+  <zorder>label_4</zorder>
+  <zorder>escu</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

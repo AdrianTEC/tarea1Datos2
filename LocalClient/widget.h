@@ -34,7 +34,9 @@ private slots:
     void on_calcular_clicked();
 
 
-    QString NewOrden(QString a,int b, int c);
+    QString NewOrden(QString a,int b, int c,int d);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::Widget *ui;
@@ -43,7 +45,7 @@ private:
     Graph * graph;
     QString getLineEditText(QLineEdit* lineEdit);
     DoubleList<DoubleList<int>>* historialPosiciones;
-    DGraph<int>* grafo;
+    Grafo<int>* grafo;
 
     void AddEdge();
 

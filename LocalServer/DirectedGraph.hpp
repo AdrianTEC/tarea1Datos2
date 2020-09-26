@@ -20,17 +20,20 @@ private:
     void getVector(DoubleList<double>* List,int len,double value);
 };
 template<typename T>
-DGraph<T>::DGraph() {
+DGraph<T>::DGraph()
+{
     Nodes=new DoubleList<T>;
     RelationMatrix=new DoubleList<DoubleList<double>>;
 }
 template<typename T>
-void DGraph<T>::getPointerMaxValue(double *&ptr) {
+void DGraph<T>::getPointerMaxValue(double *&ptr)
+{
     ptr=(double*)malloc(sizeof(double));
     *ptr=maxValue;
 }
 template<typename T>
-void DGraph<T>::getVector(DoubleList<double>* List,int len,double value){
+void DGraph<T>::getVector(DoubleList<double>* List,int len,double value)
+{
     double *temp;
     for(int i=0;i<len;i++){
         temp=(double*)malloc(sizeof(double));

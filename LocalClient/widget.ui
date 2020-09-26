@@ -153,31 +153,6 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QPushButton" name="eliminar">
-        <property name="text">
-         <string>Eliminar</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <item>
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>valor</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="byenodo"/>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
        <widget class="QPushButton" name="Enlazar">
@@ -343,12 +318,51 @@
     <rect>
      <x>0</x>
      <y>80</y>
-     <width>791</width>
-     <height>361</height>
+     <width>841</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="title">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nombre">
+   <property name="geometry">
+    <rect>
+     <x>84</x>
+     <y>57</y>
+     <width>119</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>58</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Nombre</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>60</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Confirmar</string>
    </property>
   </widget>
   <zorder>layoutWidget</zorder>
@@ -363,6 +377,9 @@
   <zorder>line_4</zorder>
   <zorder>label_13</zorder>
   <zorder>canva</zorder>
+  <zorder>nombre</zorder>
+  <zorder>label_2</zorder>
+  <zorder>pushButton</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

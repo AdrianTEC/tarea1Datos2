@@ -34,12 +34,12 @@ SOURCES += \
 
 
 HEADERS += \
-    DirectedGraph.hpp \
     DoubleList.hpp \
     DoubleNode.hpp \
     Graph.h \
     localserver.h \
-    widget.h
+    widget.h \
+    Grafo.hpp
 
 
 

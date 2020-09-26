@@ -27,14 +27,22 @@ SOURCES += \
         main.cpp \
         widget.cpp \
     localserver.cpp\
-    linkedlist.cpp \
-    grafo.cpp
+    FloydWAlgo.cpp \
+    FloydWResponse.cpp
+
 HEADERS += \
         widget.h \
     localserver.h \
-    doublelist.hpp \
-    doublenode.hpp
+    DirectedGraph.hpp \
+    DoubleList.hpp \
+    DoubleNode.hpp \
+    FloydWAlgo.h \
+    FloydWResponse.h
+
 
 FORMS += \
         widget.ui
 QMAKE_CXXFLAGS += -std=gnu++11
+
+DISTFILES += \
+
