@@ -31,7 +31,9 @@ SOURCES += \
     grafo.cpp
 HEADERS += \
         widget.h \
-    localserver.h
+    localserver.h \
+    doublelist.hpp \
+    doublenode.hpp
 
 FORMS += \
         widget.ui

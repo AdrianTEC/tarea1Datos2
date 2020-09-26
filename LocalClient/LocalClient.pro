@@ -25,14 +25,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        widget.cpp \
-    localserver.cpp
+    Graph.cpp \
+    localserver.cpp \
+    main.cpp \
+    widget.cpp
+
+
+
 
 HEADERS += \
-        widget.h \
-    localserver.h
+    DirectedGraph.hpp \
+    DoubleList.hpp \
+    DoubleNode.hpp \
+    Graph.h \
+    localserver.h \
+    widget.h
+
+
 
 FORMS += \
         widget.ui
+
+
 QMAKE_CXXFLAGS += -std=gnu++11
+
+SUBDIRS += \
+    LocalClient.pro
+
+DISTFILES += \
+    LocalClient.pro.user

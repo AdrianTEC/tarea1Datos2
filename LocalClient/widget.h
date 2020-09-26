@@ -2,6 +2,10 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include<QPainter>
+#include<QPaintEvent>
+#include<Graph.h>
+#include<QLineEdit>
 
 namespace Ui {
 class Widget;
@@ -29,12 +33,23 @@ private slots:
 
     void on_calcular_clicked();
 
+
     QString NewOrden(QString a,int b, int c);
 
 private:
     Ui::Widget *ui;
     QLocalSocket *mSocket;
     LocalServer *mLocalServer;
+    Graph * graph;
+    QString getLineEditText(QLineEdit* lineEdit);
+    DoubleList<DoubleList<int>>* historialPosiciones;
+    DGraph<int>* grafo;
+
+    void AddEdge();
+
+    void on_getRoute_clicked();
+
+    void addNodeImage();
 };
 
 #endif // WIDGET_H

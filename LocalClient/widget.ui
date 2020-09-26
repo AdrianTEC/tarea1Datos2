@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>785</width>
-    <height>584</height>
+    <width>856</width>
+    <height>662</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="quitar">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>540</y>
+     <x>730</x>
+     <y>620</y>
      <width>89</width>
      <height>21</height>
     </rect>
@@ -107,8 +107,8 @@
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
-     <x>-10</x>
-     <y>560</y>
+     <x>0</x>
+     <y>590</y>
      <width>841</width>
      <height>20</height>
     </rect>
@@ -123,7 +123,7 @@
      <x>30</x>
      <y>470</y>
      <width>731</width>
-     <height>65</height>
+     <height>120</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -209,6 +209,16 @@
           </item>
           <item>
            <widget class="QSpinBox" name="finale"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>valor</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="value"/>
           </item>
          </layout>
         </item>
@@ -300,16 +310,16 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_8">
     <item>
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="label_10">
       <property name="text">
-       <string>Cálculo más cercano</string>
+       <string>Conectar dos nodos</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="label_7">
       <property name="text">
-       <string>Conectar dos nodos</string>
+       <string>Cálculo más cercano</string>
       </property>
      </widget>
     </item>
@@ -318,7 +328,7 @@
   <widget class="QLabel" name="label_13">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>180</x>
      <y>440</y>
      <width>115</width>
      <height>20</height>
@@ -326,6 +336,19 @@
    </property>
    <property name="text">
     <string>Eliminar un nodo</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="canva">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>791</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
    </property>
   </widget>
   <zorder>layoutWidget</zorder>
@@ -339,6 +362,7 @@
   <zorder>line_3</zorder>
   <zorder>line_4</zorder>
   <zorder>label_13</zorder>
+  <zorder>canva</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
