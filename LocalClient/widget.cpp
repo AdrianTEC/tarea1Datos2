@@ -7,8 +7,11 @@
 #include <QJsonDocument>
 #include <math.h>
 #include <iostream>
-#include<Graph.h>
-
+#include<Pintor.h>
+/**
+ * @brief Widget::Widget
+ * @param parent
+ */
 Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)
     {
         ui->setupUi(this);
@@ -36,7 +39,9 @@ void Widget::on_conectar_clicked()
         mSocket->connectToServer(ui->servidor->text());
     }
 
-
+/**
+ * @brief Widget::on_quitar_clicked
+ */
 void Widget::on_quitar_clicked()
     {
         mLocalServer->close();
@@ -71,7 +76,9 @@ void Widget::on_eliminar_clicked()
     {
 
     }
-
+/**
+ * @brief Widget::on_Enlazar_clicked
+ */
 void Widget::on_Enlazar_clicked()
     {
         if(ui->inicioe->value()!=ui->finale->value())
@@ -92,7 +99,9 @@ void Widget::on_Enlazar_clicked()
         }
 
     }
-
+/**
+ * @brief Widget::on_calcular_clicked
+ */
 void Widget::on_calcular_clicked()
     {
         mLocalServer->envia(NewOrden("calculo",ui->inicioC->value(),ui->finalC->value(),0));
@@ -100,7 +109,9 @@ void Widget::on_calcular_clicked()
 
 
 
-
+/**
+ * @brief Widget::AddEdge
+ */
 void Widget::AddEdge()
     {
         graph->addEdge(ui->inicioe->value(),ui->finale->value(), ui->value->value() );
@@ -112,7 +123,9 @@ void Widget::on_getRoute_clicked()
     {
 
     }
-
+/**
+ * @brief Widget::addNodeImage
+ */
 void Widget::addNodeImage()
     {
         int x;
@@ -130,6 +143,15 @@ void Widget::addNodeImage()
         graph->addNode(x,y,ui->newnodo->value());
         graph->update();
     }
+/**
+ * @brief Widget::NewOrden
+ * @param a
+ * @param b
+ * @param c
+ * @param d
+ * Genera un JSON enviable
+ * @return
+ */
 QString Widget::NewOrden(QString a,int b, int c,int d)
     {
         QJsonObject comand
@@ -144,7 +166,9 @@ QString Widget::NewOrden(QString a,int b, int c,int d)
         return strJson;
     }
 
-
+/**
+ * @brief Widget::on_pushButton_clicked
+ */
 void Widget::on_pushButton_clicked()
 {
     mLocalServer->listen(ui->nombre->text());

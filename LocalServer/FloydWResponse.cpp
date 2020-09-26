@@ -1,14 +1,34 @@
-#include "FloydWResponse.h"
-DoubleList<DoubleList<int>>* FloydWResponse::getPredecessors() {
-    return predecessor;
+#include "Response.h"
+/**
+ * @brief FloydWResponse::getPredecessors
+ * @return
+ */
+DoubleList<DoubleList<int>>* RESPONSE::getComponentes()
+{
+    return componentes;
 }
-DoubleList<DoubleList<double>>* FloydWResponse::getPrices() {
-    return prices;
+/**
+ * @brief FloydWResponse::getPrices
+ * @return
+ */
+DoubleList<DoubleList<double>>* RESPONSE::getPrices()
+{
+    return costos;
 }
-void FloydWResponse::setPrices(DoubleList<DoubleList<double>> *E_prices) {
-    prices=E_prices;
+/**
+ * @brief FloydWResponse::setPrices
+ * @param E_prices
+ */
+void RESPONSE::setPrices(DoubleList<DoubleList<double>> *E_prices)
+{
+    costos=E_prices;
 }
-void FloydWResponse::setPredecessors(DoubleList<DoubleList<int>>*E_predecessors) {
-    predecessor=E_predecessors;
+/**
+ * @brief FloydWResponse::setPredecessors
+ * @param E_predecessors
+ */
+void RESPONSE::setPredecessors(DoubleList<DoubleList<int>>*E_predecessors)
+{
+    componentes=E_predecessors;
 }
 

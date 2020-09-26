@@ -1,4 +1,4 @@
-#include "Graph.h"
+#include "Pintor.h"
 #include<iostream>
 
 Graph::Graph(QWidget *parent) : QWidget(parent)
@@ -10,6 +10,10 @@ Graph::Graph(QWidget *parent) : QWidget(parent)
     stringValues=new DoubleList<int>;
     resize(*Xlen,*Ylen);
 }
+/**
+ * @brief Graph::paintEvent
+ * @param event
+ */
 void Graph::paintEvent(QPaintEvent *event)
 {
     QPoint temp;
@@ -46,6 +50,12 @@ void Graph::paintEvent(QPaintEvent *event)
 
 
 }
+/**
+ * @brief Graph::addNode
+ * @param x
+ * @param y
+ * @param value
+ */
 void Graph::addNode(int x,int y, int value)
     {
 
@@ -54,6 +64,12 @@ void Graph::addNode(int x,int y, int value)
 
 
     }
+/**
+ * @brief Graph::addEdge
+ * @param a
+ * @param b
+ * @param value
+ */
 void Graph::addEdge(int a, int b, int value)
     {
         Edges->add(*new int(a));
@@ -80,15 +96,27 @@ void Graph::addEdge(int a, int b, int value)
         stringValues->add(*new int(value));
 
     }
+/**
+ * @brief Graph::setRadius
+ * @param rad
+ */
 void Graph::setRadius(int rad){
     *radius=*new int(rad);
 }
+/**
+ * @brief Graph::setSize
+ * @param x
+ * @param y
+ */
 void Graph::setSize(int x, int y){
     if(x>0)*Xlen=*new int(x);
     if(y>0)*Ylen=*new int(y);
     resize(*Xlen,*Ylen);
 }
-
+/**
+ * @brief Graph::giveColor
+ * @return
+ */
 QColor Graph::giveColor()
     {
 

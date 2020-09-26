@@ -4,7 +4,7 @@
 #include <QWidget>
 #include<QPainter>
 #include<QPaintEvent>
-#include<Graph.h>
+#include<Pintor.h>
 #include<QLineEdit>
 
 namespace Ui {

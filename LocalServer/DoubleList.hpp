@@ -28,22 +28,38 @@ public:
     int getLen();
 };
 template <typename T>
+/**
+ * @brief DoubleList<T>::DoubleList
+ */
 DoubleList<T>::DoubleList() {
     len=EmptyLen;
     Tail=NULL;
     Head=NULL;
 }
 template <typename T>
+/**
+ * @brief DoubleList<T>::~DoubleList
+ */
 DoubleList<T>::~DoubleList(){
     if(Tail!=NULL)free(Tail);
     if(Head!=NULL)free(Head);
 }
 template<typename T>
+/**
+ * @brief DoubleList<T>::verification
+ * @param index
+ * @return
+ */
 bool DoubleList<T>::verification(int index) {
     if(index<minIndex || index>=len)return false;
     return true;
 }
 template<typename T>
+/**
+ * @brief DoubleList<T>::getNode
+ * @param pos
+ * @return
+ */
 DoubleNode<T>* DoubleList<T>::getNode(int pos) {
     if(!DoubleList<T>::verification(pos))throw  OutIndexException();
     DoubleNode<T>* temp=Head;
@@ -54,10 +70,19 @@ DoubleNode<T>* DoubleList<T>::getNode(int pos) {
 }
 
 template <typename T>
+/**
+ * @brief DoubleList<T>::getLen
+ * @return
+ */
 int DoubleList<T>::getLen() {
     return len;
 }
+
 template<typename T>
+/**
+ * @brief DoubleList<T>::add
+ * @param data
+ */
 void DoubleList<T>::add(T &data)
     {
         DoubleNode<T> *temp=new DoubleNode<T>;
@@ -77,12 +102,23 @@ void DoubleList<T>::add(T &data)
             }
     }
 template<typename T>
+/**
+ * @brief DoubleList<T>::get
+ * @param pos
+ * @return
+ */
 T* DoubleList<T>::get(int pos)
 {
     DoubleNode<T>* Signaled=DoubleList<T>::getNode(pos);
     return Signaled->getData();
 }
+
+
 template <typename T>
+/**
+ * @brief DoubleList<T>::erase
+ * @param pos
+ */
 void DoubleList<T>::erase(int pos) {
     DoubleNode<T>* Signaled=DoubleList<T>::getNode(pos);
     if(len==singleElement){
@@ -100,13 +136,26 @@ void DoubleList<T>::erase(int pos) {
     }
     free(Signaled);
     len--;
-}template<typename T>
+
+}
+
+template<typename T>
+/**
+ * @brief DoubleList<T>::set
+ * @param pos
+ * @param data
+ */
 void DoubleList<T>::set(int pos,T &data) {
     DoubleNode<T>* temp=getNode(pos);
     temp->setData(data);
 
 }
+
 template<typename T>
+/**
+ * @brief DoubleList<T>::DoubleList
+ * @param List
+ */
 DoubleList<T>::DoubleList(DoubleList<T> &List) {
     Tail=NULL;
     Head=NULL;

@@ -9,6 +9,11 @@ LocalServer::LocalServer(QObject *parent) : QLocalServer(parent)
 
     });
 }
+/**
+ * @brief LocalServer::envia
+ * @param msj
+ * Envia los mensajes por medio del socket
+ */
 void  LocalServer::envia(const QString &msj)
     {
         if(mSocket){

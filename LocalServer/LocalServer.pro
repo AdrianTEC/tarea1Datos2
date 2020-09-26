@@ -27,17 +27,17 @@ SOURCES += \
         main.cpp \
         widget.cpp \
     localserver.cpp\
-    FloydWAlgo.cpp \
-    FloydWResponse.cpp
+    FloydWResponse.cpp \
+    FloydWarshall.cpp
 
 HEADERS += \
         widget.h \
     localserver.h \
-    DirectedGraph.hpp \
     DoubleList.hpp \
     DoubleNode.hpp \
-    FloydWAlgo.h \
-    FloydWResponse.h
+    FloydWarshall.h \
+    Grafo.hpp \
+    Response.h
 
 
 FORMS += \

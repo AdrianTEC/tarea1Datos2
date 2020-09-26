@@ -1,9 +1,12 @@
 #include "DoubleList.hpp"
 template<typename T>
-class DGraph{
+/**
+ * @brief The DGraph class
+ */
+class Grafo{
 public:
-    DGraph();
-    ~DGraph();
+    Grafo();
+    ~Grafo();
     T* getNode(int pos);
     DoubleList<double>* getRelations(int pos);
     DoubleList<DoubleList<double>>* getRelations();
@@ -19,68 +22,117 @@ private:
     void getPointerMaxValue(double *&ptr);
     void getVector(DoubleList<double>* List,int len,double value);
 };
+
 template<typename T>
-DGraph<T>::DGraph()
+/**
+ * @brief DGraph<T>::DGraph
+ */
+Grafo<T>::Grafo()
 {
     Nodes=new DoubleList<T>;
     RelationMatrix=new DoubleList<DoubleList<double>>;
 }
+
+
 template<typename T>
-void DGraph<T>::getPointerMaxValue(double *&ptr)
+/**
+ * @brief DGraph<T>::getPointerMaxValue
+ * @param ptr
+ */
+void Grafo<T>::getPointerMaxValue(double *&ptr)
 {
     ptr=(double*)malloc(sizeof(double));
     *ptr=maxValue;
 }
+
+
 template<typename T>
-void DGraph<T>::getVector(DoubleList<double>* List,int len,double value)
-{
-    double *temp;
-    for(int i=0;i<len;i++){
-        temp=(double*)malloc(sizeof(double));
-        *temp=value;
-        List->add(*temp);
+/**
+ * @brief DGraph<T>::getVector
+ * @param List
+ * @param len
+ * @param value
+ */
+void Grafo<T>::getVector(DoubleList<double>* List,int len,double value)
+    {
+        double *temp;
+        for(int i=0;i<len;i++){
+            temp=(double*)malloc(sizeof(double));
+            *temp=value;
+            List->add(*temp);
+        }
     }
-}
+
 template<typename T>
-T* DGraph<T>::getNode(int pos) {
+/**
+ * @brief DGraph<T>::getNode
+ * @param pos
+ * @return
+ */
+T* Grafo<T>::getNode(int pos) {
     return Nodes->get(pos);
-}
+    }
+    template<typename T>
+    DoubleList<double>* Grafo<T>::getRelations(int pos) {
+        return RelationMatrix->get(pos);
+    }
+
+
 template<typename T>
-DoubleList<double>* DGraph<T>::getRelations(int pos) {
-    return RelationMatrix->get(pos);
-}
-template<typename T>
-void DGraph<T>::AddNode(T &data) {
+ /**
+ * @brief DGraph<T>::AddNode
+ * @param data
+ */
+void Grafo<T>::AddNode(T &data) {
     double *temp;
     Nodes->add(data);
     int len=Nodes->getLen();
     for(int i=0;i<len-1;i++){
-        DGraph<T>::getPointerMaxValue(temp);
+        Grafo<T>::getPointerMaxValue(temp);
         RelationMatrix->get(i)->add(*temp);
     }
     DoubleList<double>* vector=new DoubleList<double>;
     getVector(vector,len,maxValue);
     RelationMatrix->add(*vector);
 }
+
+
 template<typename T>
-void DGraph<T>::DeleteNode(int pos) {
+/**
+ * @brief DGraph<T>::DeleteNode
+ * @param pos
+ */
+void Grafo<T>::DeleteNode(int pos) {
     Nodes->erase(pos);
     RelationMatrix->erase(pos);
     for(int i=0;i<RelationMatrix->getLen();i++){
         RelationMatrix->get(i)->erase(pos);
     }
 }
+
+
 template<typename T>
-void DGraph<T>::fixRelationShip(int from, int to, double price) {
+/**
+ * @brief DGraph<T>::fixRelationShip
+ * @param from
+ * @param to
+ * @param price
+ */
+void Grafo<T>::fixRelationShip(int from, int to, double price) {
     *RelationMatrix->get(from)->get(to)=price;
 }
-template<typename T>
 
-DoubleList<DoubleList<double>>* DGraph<T>::getRelations(){
+
+template<typename T>
+/**
+ * @brief DGraph<T>::getRelations
+ * @return
+ */
+DoubleList<DoubleList<double>>* Grafo<T>::getRelations(){
     return RelationMatrix;
 }
 template<typename T>
-DGraph<T>::~DGraph(){
+Grafo<T>::~Grafo(){
     free(RelationMatrix);
     free(Nodes);
 }

@@ -6,12 +6,13 @@ using namespace std;
  * Constructor
  * @brief Widget::Widget
  * @param parent
+ * @author Adrian Gonzalez
  */
 Widget::Widget(QWidget *parent) :QWidget(parent),ui(new Ui::Widget)
     {
         ui->setupUi(this);
         mSocket= new QLocalSocket(this);
-        grafo= new DGraph<int>;
+        grafo= new Grafo<int>;
         mLocalServer= new LocalServer(this);
         connect(mSocket,&QLocalSocket::readyRead,[&]{QTextStream T(mSocket);QString algo= T.readAll();call(algo);});
         this->setWindowTitle("Servidor");
@@ -21,7 +22,10 @@ Widget::~Widget()
     {
         delete ui;
     }
-
+/**
+ * @brief Widget::on_iniciar_clicked
+ *  * @author Adrian Gonzalez
+ */
 void Widget::on_iniciar_clicked()
     {
        if( ! mLocalServer->listen(ui->servidor->text()))
@@ -39,7 +43,7 @@ void Widget::on_iniciar_clicked()
 /**
  * @brief Widget::on_enviar_clicked
  * @name ENVIAR
- *
+ * @author Adrian Gonzalez
  *
  */
 
@@ -49,6 +53,7 @@ void Widget::on_enviar_clicked()
     }
 /**
  * @brief Widget::on_quitar_clicked
+  * @author Adrian Gonzalez
  */
 void Widget::on_quitar_clicked()
     {
@@ -59,6 +64,7 @@ void Widget::on_quitar_clicked()
  * @brief Widget::call
  * @param info
  * @name CALL
+ * @author Adrian Gonzalez
  */
 
 void Widget::call(QString info)
@@ -111,6 +117,7 @@ void Widget::call(QString info)
  * @brief Widget::value
  * @param valor
  * @return
+ * @author Adrian Gonzalez
  */
 QString Widget::value(QString valor)
     {
@@ -128,6 +135,7 @@ QString Widget::value(QString valor)
  * @brief Widget::comprobar
  * @param valor
  * @return
+ * @author Adrian Gonzalez
  */
 bool Widget::comprobar(QString valor)
     {

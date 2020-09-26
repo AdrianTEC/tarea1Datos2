@@ -1,12 +1,16 @@
-#include "DirectedGraph.hpp"
+#include "Grafo.hpp"
 
-class FloydWResponse{
+class RESPONSE{
+
 private:
-    DoubleList<DoubleList<double>>* prices;
-    DoubleList<DoubleList<int>> * predecessor;
+
+    DoubleList<DoubleList<double>>* costos;
+    DoubleList<DoubleList<int>> * componentes;
+
 public:
+
     DoubleList<DoubleList<double>>* getPrices();
-    DoubleList<DoubleList<int>>* getPredecessors();
+    DoubleList<DoubleList<int>>* getComponentes();
     void setPrices(DoubleList<DoubleList<double>>* E_prices);
     void setPredecessors(DoubleList<DoubleList<int>>* E_predecessors);
 };

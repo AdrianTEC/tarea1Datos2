@@ -25,10 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    Graph.cpp \
     localserver.cpp \
     main.cpp \
-    widget.cpp
+    widget.cpp \
+    Pintor.cpp
 
 
 
@@ -36,10 +36,10 @@ SOURCES += \
 HEADERS += \
     DoubleList.hpp \
     DoubleNode.hpp \
-    Graph.h \
     localserver.h \
     widget.h \
-    Grafo.hpp
+    Grafo.hpp \
+    Pintor.h
 
 
 

@@ -12,7 +12,7 @@
 #include<QJsonObject>
 #include <QJsonDocument>
 
-#include "FloydWAlgo.h"
+#include "FloydWarshall.h"
 using namespace std;
 namespace Ui {
 class Widget;
@@ -44,7 +44,7 @@ private:
     QLocalSocket *mSocket;
     QJsonObject* orden;
     QString value(QString valor);
-    DGraph<int>* grafo;
+    Grafo<int>* grafo;
 };
 
 #endif // WIDGET_H
